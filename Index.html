@@ -17,29 +17,29 @@
             padding: 5px;
         }
 
-        .hider{
+        .hider {
             display: none;
         }
 
         .principal0 {
             width: 100%;
             height: 1500px;
-            
-           
+
+
             font-family: Arial, Helvetica, sans-serif;
         }
-        
-        .principal0 .h2{
+
+        .principal0 .h2 {
             color: antiquewhite;
-            font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
             height: 40px;
             width: 40%;
-            
+
         }
 
         .principal {
             width: 80%;
-            background-color: rgb(199, 58, 58);
+            background-color: rgba(142, 179, 204, 0.527);
             border: solid 2px;
             border-color: rgb(20, 20, 20);
         }
@@ -50,56 +50,52 @@
             flex-direction: row;
             padding: 5px;
         }
-             
+
         .btn {
-            
-    border: none;
-    padding: 10px;
-    text-decoration: none;
-    cursor: pointer;
-    transition: background .3s;
-    border-radius: 5px;
-    background-color: rgb(191, 230, 248);
+
+            border: none;
+            padding: 10px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background .3s;
+            border-radius: 5px;
+            background-color: rgb(191, 230, 248);
         }
 
         body {
-            
+
             background-attachment: fixed;
             background-size: 100%;
-            background-image: url("11.png");
             background-repeat: no-repeat;
             background-color: rgb(89, 120, 221);
+            background-image: url("11.png");
         }
-
-
-
-
     </style>
 </head>
 
 <body>
     <center>
         <div class="principal0" id="d1">
-            <div>        
+            <div>
                 <h2 class="h2">CADASTRO</h2>
-                <div class="input-group" style="color: antiquewhite;"> 
-                  <b>Nome:</b> 
+                <div class="input-group" style="color: antiquewhite;">
+                    <b>Nome:</b>
                     <br>
-                    <input id="nm" type="text" maxlength="10" placeholder="Digite seu nome"  required >
-                </div>
-                <br>
-
-                <div class="input-group" style="color: antiquewhite;" >
-                   <b>Email: </b>
-                    <br>
-                    <input id="lg" type="email" minlength="10" placeholder="Digite seu email"  required>
+                    <input id="nm" type="text" maxlength="10" placeholder="Digite seu nome" required>
                 </div>
                 <br>
 
                 <div class="input-group" style="color: antiquewhite;">
-                   <b> Login: </b> 
+                    <b>Email: </b>
                     <br>
-                    <input id="lg" type="email" minlength="10" placeholder="Digite seu login"  required>
+                    <input id="em" type="email" minlength="10" placeholder="Digite seu email" required>
+                </div>
+                <br>
+
+                <div class="input-group" style="color: antiquewhite;">
+                    <b> Login: </b>
+                    <br>
+                    <input id="lg" type="email" minlength="10" placeholder="Digite seu login" required>
                 </div>
                 <br>
 
@@ -110,16 +106,16 @@
                     <input id="s0" minlength="8" type="password" placeholder="Digite sua senha" required>
                 </div>
                 <br>
-                
-                <div class="input-group" style="color: antiquewhite;" >
-                  <b>Confirme sua senha:</b>  
+
+                <div class="input-group" style="color: antiquewhite;">
+                    <b>Confirme sua senha:</b>
                     <br>
-                    <input id="s1" minlength="8" type="password" placeholder="Confirme sua senha"  required>
+                    <input id="s1" minlength="8" type="password" placeholder="Confirme sua senha" required>
                 </div>
                 <br>
                 <button class="btn" onclick="login()">Cadastre-se</button>
                 <br>
-                <br>     
+                <br>
             </div>
         </div>
         <div class="hider" id="d2">
@@ -162,21 +158,21 @@
                 var botao = document.createElement('button');
                 var box = document.createElement('input');
 
-                
+
 
                 divNova.className = "itens";
 
                 box.setAttribute("type", "checkbox");
 
                 botao.innerHTML = "Remover";
-                
+
                 botao.addEventListener("click",
                     function () {
                         divNova.remove();
                     })
 
                 divNova.appendChild(box);
-                
+
                 box.addEventListener('change', function () {
                     if (this.checked) {
                         divNova.style.textDecoration = "line-through";
@@ -198,49 +194,34 @@
         }
 
         function limpar() {
-            for(var a = 0 ; a <= 10 ; a++)
-            document.getElementsByClassName('marcados')[a].remove();
+            for (var a = 0; a <= 10; a++)
+                document.getElementsByClassName('marcados')[a].remove();
             a = 0;
-        } 
+        }
 
-        function login(){
+        function login() {
             var senha0 = document.getElementById('s0').value;
             var senha1 = document.getElementById('s1').value;
             var name = document.getElementById('nm').value;
-            var login = document.getElementById('lg').value;
-            
-            var conf = 1;
-            if( name == 0 ){
+            var login = document.getElementById('em').value;
+
+            //var conf = 1;
+            if (name == "") {
                 alert("o nome deve ser preenchido");
-            }else{
-                conf = conf+1;
             }
-            if(login.includes('@')){
-               
-            }else{
+            if (login.includes('@')) {
+
+            } else {
                 alert("coloque um email valido")
             }
-            if(conf == 3 && senha0 == senha1 ){
+            if ((senha0 == senha1) && (senha0 != "")) {
                 document.getElementById("d1").style.display = "none";
                 document.getElementById("d2").style.display = "inline";
             }
-            //else if(senha0 == senha1){
-            //    alert("senhas diferentes");
-            //}   
-        }
-
-        function mostrar(){
-            var senha0 = document.getElementById('s0').value;
-            var senha1 = document.getElementById('s1').value;
-            
-                if( senha0 == senha1){
-                    document.getElementById("d1").style.display = "none";
-                    document.getElementById("d2").style.display = "inline";
-                }
-                else{
-                    alert("senhas diferentes");
-                }
-        }    
+            else {
+                alert("senhas diferentes");
+            }   
+        }        
     </script>
 </body>
 
